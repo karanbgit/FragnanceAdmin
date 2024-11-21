@@ -1,0 +1,27 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+ 
+}
+
+
+
+:root{
+    --white: #fff;
+    --black: #000;
+    --orange: #FF2E11;
+    --green:#106513;
+    --darkGray:#6c757d;
+    --lightGray:#c5ccd4;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none !important;
+}
+
+.navbar-toggler {
+    border: none !important;
+}
+
