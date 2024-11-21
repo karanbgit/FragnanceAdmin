@@ -11,7 +11,8 @@ class AdminController extends CI_Controller
 
     public function index()
     {
-        $this->load->view('AdminLogin');
+        $data['title'] = 'Admin Login';
+        $this->load->view('AdminLogin', $data);
     }
 
     public function home()
@@ -19,7 +20,35 @@ class AdminController extends CI_Controller
         $this->load->view('AdminHome');
     }
 
-    
+    public function orders()
+    {
+        $this->load->view('AdminOrders');
+    }
 
+    public function users()
+    {
+        $this->load->view('AdminUsers');
+    }
+
+    public function reports()
+    {
+        $this->load->view('AdminReports');
+    }
+
+    public function AllProducts()
+    {
+        $this->load->view('AllProducts');
+    }
+
+    public function settings()
+    {
+        $this->load->view('AdminSettings');
+    }
+
+    public function logout()
+    {
+        $this->session->sess_destroy();
+        redirect('AdminController');
+    }
 }
 ?>

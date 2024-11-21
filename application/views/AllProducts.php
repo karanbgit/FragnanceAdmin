@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fragnance | Admin Dashboard</title>
+    <title>Fragnance | All Products</title>
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -117,69 +117,58 @@
 </head>
 
 <body>
-
     <?php $this->load->view('Include/AdminSidebar.php'); ?>
 
     <div class="main-content vh-100" id="main">
         <div class="container-fluid p-4 ">
-            <h1 class="display-5 mb-4 text-purple fw-bold">Welcome to Admin Dashboard</h1>
+            <h1 class="display-5 mb-3 fs-1 text-purple fw-bold">All Products</h1>
 
-            <div class="container my-5 rounded-3 shadow-lg" style="background-color: var(--lightPurple);">
-                <div class="row my-4">
-                    <div class="col-12">
-                        <h2 class="fw-bold text-center p-4 rounded-3 text-purple"
-                            style="background-color: rgba(255,255,255,0.7);">
-                            <i class="fas fa-chart-line me-2"></i>Statistics Overview
-                            <a href="<?php echo base_url('CrudControllers/Logout') ?>" class="btn btn-danger float-end m-2">Logout</a>
+            <div class="container rounded-3 shadow-lg" style="background-color: var(--lightPurple);">
+                <div class="row">
+                    <div class="container">
+                        <a href="<?php echo base_url('CrudControllers/Form') ?>" class="btn btn-primary m-2">Add
+                            Product</a>
 
-                        </h2>
-                    </div>
-                </div>
+                        <table class="table table-bordered text-center">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th>Sr. No</th>
+                                    <th>Name</th>
+                                    <th>Price</th>
+                                    <th>Description</th>
+                                    <th>Image</th>
+                                    <th>Actions</th>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Product 1</td>
+                                    <td>100</td>
+                                    <td>Description 1</td>
+                                    <td><img src="<?php echo base_url() . 'uploads/product1.jpg' ?>" alt="Product 1"
+                                            style="width: 100px; height: 100px;"></td>
+                                    <td><a href="#" class="btn btn-primary">Edit</a> <a href="#"
+                                            class="btn btn-danger">Delete</a></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Product 2</td>
+                                    <td>200</td>
+                                    <td>Description 2</td>
+                                    <td><img src="<?php echo base_url() . 'uploads/product2.jpg' ?>" alt="Product 2"
+                                            style="width: 100px; height: 100px;"></td>
+                                    <td><a href="#" class="btn btn-primary">Edit</a> <a href="#"
+                                            class="btn btn-danger">Delete</a></td>
+                                </tr>
+                            </thead>
 
-                <div class="row d-flex justify-content-center align-items-center pb-5 px-4">
-                    <div class="col-12 col-sm-6 col-lg-4 d-flex justify-content-center mb-4">
-                        <div class="card shadow  d-flex justify-content-center align-items-center p-4"
-                            style="width: 250px; height: 220px; border: none; background-color: var(--lightGray); transition: all 0.3s ease;">
-                            <div class="circle-icon mb-3 d-flex align-items-center justify-content-center rounded-circle"
-                                style="width: 80px; height: 80px; background-color: var(--lightPurple);">
-                                <i class="fas fa-user-tie fa-2x" style="color: var(--purple);"></i>
-                            </div>
-                            <h4 class="text-center fw-bold text-purple">Total Vendors</h4>
-                            <p id="totalTailor" class="fs-2 text-center mb-0 fw-bold" style="color: var(--purple);">50
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-sm-6 col-lg-4 d-flex justify-content-center mb-4">
-                        <div class="card shadow  d-flex justify-content-center align-items-center p-4"
-                            style="width: 250px; height: 220px; border: none; background-color: var(--lightGray); transition: all 0.3s ease;">
-                            <div class="circle-icon mb-3 d-flex align-items-center justify-content-center rounded-circle"
-                                style="width: 80px; height: 80px; background-color: var(--lightPurple);">
-                                <i class="fas fa-users fa-2x" style="color: var(--purple);"></i>
-                            </div>
-                            <h4 class="text-center fw-bold text-purple">Total Users</h4>
-                            <p id="totalUser" class="fs-2 text-center mb-0 fw-bold" style="color: var(--purple);">40</p>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-sm-6 col-lg-4 d-flex justify-content-center mb-4">
-                        <div class="card shadow  d-flex justify-content-center align-items-center p-4"
-                            style="width: 250px; height: 220px; border: none; background-color: var(--lightGray); transition: all 0.3s ease;">
-                            <div class="circle-icon mb-3 d-flex align-items-center justify-content-center rounded-circle"
-                                style="width: 80px; height: 80px; ">
-                                <i class="fas fa-clock fa-2x" "></i>
-                            </div>
-                            <h4 class=" text-center fw-bold text-purple">Pending Requests</h4>
-                                    <p id="requestPending" class="fs-2 text-center mb-0 fw-bold" s">10</p>
-                            </div>
-                        </div>
-
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
+
+    </div>
 
 
     <!-- Bootstrap JS -->
@@ -200,6 +189,7 @@
             });
         }
     </script>
+
 </body>
 
 </html>
