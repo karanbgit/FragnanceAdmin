@@ -7,12 +7,45 @@ class AdminController extends CI_Controller
     {
         parent::__construct();
         $this->load->model('AdminModel');
+        $this->load->library("session");
+        $this->load->helper(array('form', 'url'));
     }
 
+    public function ValidateSession()
+    {
+        $loggedin = $this->session->userdata('user');
+        if (!$loggedin) {
+
+            return false;
+        }
+        return true;
+
+    }
     public function index()
     {
-        $data['title'] = 'Admin Login';
-        $this->load->view('AdminLogin', $data);
+        $loggedin = $this->ValidateSession();
+        // print_r($loggedin);die;
+        if ($loggedin) {
+            return redirect('AdminController/home');
+        }
+        $this->load->view('AdminLogin');
+
+    }
+
+
+    public function Loginpost()
+    {
+        $data = $this->input->post();
+        $result = $this->AdminModel->LoginModelpost($data);
+        if ($result) {
+            $this->session->set_userdata('user', true);
+            $this->session->set_flashdata('success', 'Login Successfull');
+            redirect('AdminController/home');
+        } else {
+            $this->session->set_flashdata('error', 'Invalid email or password');
+            redirect('AdminController/index');
+
+        }
     }
 
     public function home()

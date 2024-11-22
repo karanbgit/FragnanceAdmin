@@ -122,7 +122,7 @@
 
     <div class="main-content vh-100" id="main">
         <div class="container-fluid p-4 ">
-            <h1 class="display-5 mb-4 text-purple fw-bold">Welcome to Admin Dashboard</h1>
+            <h1 class="display-5 fs-1 mb-4 text-purple fw-bold">Welcome to Admin Dashboard</h1>
 
             <div class="container my-5 rounded-3 shadow-lg" style="background-color: var(--lightPurple);">
                 <div class="row my-4">
@@ -130,8 +130,6 @@
                         <h2 class="fw-bold text-center p-4 rounded-3 text-purple"
                             style="background-color: rgba(255,255,255,0.7);">
                             <i class="fas fa-chart-line me-2"></i>Statistics Overview
-                            <a href="<?php echo base_url('CrudControllers/Logout') ?>" class="btn btn-danger float-end m-2">Logout</a>
-
                         </h2>
                     </div>
                 </div>
