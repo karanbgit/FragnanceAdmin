@@ -8,8 +8,9 @@ class AdminController extends CI_Controller
         parent::__construct();
         $this->load->model('AdminModel');
         $this->load->library("session");
+
         $this->load->helper(array('form', 'url'));
-        
+
     }
 
     public function ValidateSession()
@@ -52,13 +53,10 @@ class AdminController extends CI_Controller
 
     public function Logout()
     {
-        // Destroy the session
+        log_message('debug', 'Destroying session...');
         $this->session->sess_destroy();
-
-        // Optionally, redirect to login page or home
+        log_message('debug', 'Session destroyed.');
         redirect('AdminController/index');
-        // Adjust the redirect path as needed
-
     }
 
     public function home()
@@ -66,9 +64,9 @@ class AdminController extends CI_Controller
         $this->load->view('AdminHome');
     }
 
-    public function orders()
+    public function AdminOrder()
     {
-        $this->load->view('AdminOrders');
+        $this->load->view('AdminOrder');
     }
 
     public function users()
