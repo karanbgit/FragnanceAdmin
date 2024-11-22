@@ -178,6 +178,12 @@
         </div>
     </div>
 
+    <?php if ($this->session->flashdata('success')): ?>
+        <script>
+            alert("<?php echo $this->session->flashdata('success'); ?>");
+        </script>
+    <?php endif; ?>
+
 
 
     <!-- Bootstrap JS -->

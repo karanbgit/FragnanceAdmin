@@ -29,7 +29,7 @@
             <i class="fa-solid fa-gear"></i>
             <span class="nav-text">Settings</span>
         </a>
-        <a href="<?php echo base_url() . 'AdminController/logout'; ?>" class="nav-link">
+        <a href="<?php echo base_url() . 'AdminController/Logout'; ?>" class="nav-link">
             <i class="fa-solid fa-right-from-bracket"></i>
             <span class="nav-text">Logout</span>
         </a>

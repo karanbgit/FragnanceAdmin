@@ -140,7 +140,7 @@
     <div class="container">
         <h2>Login</h2>
 
-        <form action="" method="post">
+        <form action="<?php echo base_url('AdminController/Loginpost') ?>" method="post">
 
             <div class="form-group">
                 <input type="email" name="email" required>
@@ -160,6 +160,12 @@
 
         </form>
     </div>
+
+    <?php if ($this->session->flashdata('error')): ?>
+        <script>
+            alert("<?php echo $this->session->flashdata('error'); ?>");
+        </script>
+    <?php endif; ?>
 
 
 </body>

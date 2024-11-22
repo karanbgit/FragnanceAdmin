@@ -20,19 +20,20 @@ class AdminModel extends CI_Model
             return $result;
         }
         return null;
+
     }
 
-    function AddUser($userdata)
-    {
+    // function AddUser($userdata)
+    // {
 
-        $this->db->insert("user", $userdata);
-    }
+    //     $this->db->insert("user", $userdata);
+    // }
 
-    function GetUserData()
-    {
-        $users = $this->db->get("user")->result();
-        print_r($users);
-    }
+    // function GetUserData()
+    // {
+    //     $users = $this->db->get("user")->result();
+    //     print_r($users);
+    // }
 }
 
 ?>
