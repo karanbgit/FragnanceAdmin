@@ -160,7 +160,7 @@
                                 <i class="fas fa-users fa-2x" style="color: var(--purple);"></i>
                             </div>
                             <h4 class="text-center fw-bold text-purple">Total Users</h4>
-                            <p id="totalUser" class="fs-2 text-center mb-0 fw-bold" style="color: var(--purple);">40</p>
+                            <p id="totalUser" class="fs-2 text-center mb-0 fw-bold" style="color: var(--purple);">2</p>
                         </div>
                     </div>
 
