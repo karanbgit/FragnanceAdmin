@@ -17,18 +17,18 @@
             <i class="fa-solid fa-users"></i>
             <span class="nav-text">Users</span>
         </a>
-        <a href="<?php echo base_url() . 'AdminController/reports'; ?>" class="nav-link">
+        <!-- <a href="<?php echo base_url() . 'AdminController/reports'; ?>" class="nav-link">
             <i class="fa-solid fa-chart-line"></i>
             <span class="nav-text">Reports</span>
-        </a>
+        </a> -->
         <a href="<?php echo base_url() . 'AdminController/AllProducts'; ?>" class="nav-link">
             <i class="fa-solid fa-box"></i>
             <span class="nav-text">Products</span>
         </a>
-        <a href="<?php echo base_url() . 'AdminController/settings'; ?>" class="nav-link">
+        <!-- <a href="<?php echo base_url() . 'AdminController/settings'; ?>" class="nav-link">
             <i class="fa-solid fa-gear"></i>
             <span class="nav-text">Settings</span>
-        </a>
+        </a> -->
         <a href="<?php echo base_url() . 'AdminController/Logout'; ?>" class="nav-link">
             <i class="fa-solid fa-right-from-bracket"></i>
             <span class="nav-text">Logout</span>

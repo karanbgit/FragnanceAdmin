@@ -138,7 +138,7 @@
 <body>
 
     <div class="container">
-        <h2>Login</h2>
+        <h2>Admin Login</h2>
 
         <form action="<?php echo base_url('AdminController/Loginpost') ?>" method="post">
 
@@ -154,7 +154,7 @@
                 <i class="fa-solid fa-lock"></i>
             </div>
 
-            <p><input class="form-check-input" type="checkbox">Remember Me <a href="#">Forget Password</a></p>
+            <p><a href="#">Forget Password</a></p>
 
             <button id="btn" type="submit" name="login" value="Login">Login</button>
 

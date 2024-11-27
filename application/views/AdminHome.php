@@ -139,48 +139,39 @@
                 </div>
 
                 <div class="row d-flex justify-content-center align-items-center pb-5 px-4">
+                   
                     <div class="col-12 col-sm-6 col-lg-4 d-flex justify-content-center mb-4">
-                        <div class="card shadow  d-flex justify-content-center align-items-center p-4"
-                            style="width: 250px; height: 220px; border: none; background-color: var(--lightGray); transition: all 0.3s ease;">
-                            <div class="circle-icon mb-3 d-flex align-items-center justify-content-center rounded-circle"
-                                style="width: 80px; height: 80px; background-color: var(--lightPurple);">
-                                <i class="fas fa-user-tie fa-2x" style="color: var(--purple);"></i>
+                        <a href="<?php echo base_url() . 'AdminController/Users'; ?>" class="text-decoration-none">
+                            <div class="card shadow  d-flex justify-content-center align-items-center p-4"
+                                style="width: 250px; height: 220px; border: none; background-color: var(--lightGray); transition: all 0.3s ease;">
+                                <div class="circle-icon mb-3 d-flex align-items-center justify-content-center rounded-circle"
+                                    style="width: 80px; height: 80px; background-color: var(--lightPurple);">
+                                    <i class="fas fa-users fa-2x" style="color: black;"></i>
+                                </div>
+                                <h4 class="text-center fw-bold" style="color: black;">Total Users</h4>
+                                <p id="totalUser" class="fs-2 text-center mb-0 fw-bold" style="color: black;">2</p>
                             </div>
-                            <h4 class="text-center fw-bold text-purple">Total Vendors</h4>
-                            <p id="totalTailor" class="fs-2 text-center mb-0 fw-bold" style="color: var(--purple);">50
-                            </p>
-                        </div>
+                        </a>
                     </div>
 
                     <div class="col-12 col-sm-6 col-lg-4 d-flex justify-content-center mb-4">
-                        <div class="card shadow  d-flex justify-content-center align-items-center p-4"
-                            style="width: 250px; height: 220px; border: none; background-color: var(--lightGray); transition: all 0.3s ease;">
-                            <div class="circle-icon mb-3 d-flex align-items-center justify-content-center rounded-circle"
-                                style="width: 80px; height: 80px; background-color: var(--lightPurple);">
-                                <i class="fas fa-users fa-2x" style="color: var(--purple);"></i>
+                        <a href="<?php echo base_url() . 'AdminController/AdminOrder'; ?>" class="text-decoration-none">
+                            <div class="card shadow d-flex justify-content-center align-items-center p-4"
+                                style="width: 250px; height: 220px; border: none; background-color: var(--lightGray); transition: all 0.3s ease;">
+                                <div class="circle-icon mb-3 d-flex align-items-center justify-content-center rounded-circle"
+                                    style="width: 80px; height: 80px; background-color: var(--lightPurple);">
+                                    <i class="fas fa-clock fa-2x" style="color: black;"></i>
+                                </div>
+                                <h4 class="text-center fw-bold" style="color: black;">Pending Requests</h4>
+                                <p id="requestPending" class="fs-2 text-center mb-0 fw-bold" style="color: black;">10</p>
                             </div>
-                            <h4 class="text-center fw-bold text-purple">Total Users</h4>
-                            <p id="totalUser" class="fs-2 text-center mb-0 fw-bold" style="color: var(--purple);">2</p>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-sm-6 col-lg-4 d-flex justify-content-center mb-4">
-                        <div class="card shadow  d-flex justify-content-center align-items-center p-4"
-                            style="width: 250px; height: 220px; border: none; background-color: var(--lightGray); transition: all 0.3s ease;">
-                            <div class="circle-icon mb-3 d-flex align-items-center justify-content-center rounded-circle"
-                                style="width: 80px; height: 80px; ">
-                                <i class="fas fa-clock fa-2x" "></i>
-                            </div>
-                            <h4 class=" text-center fw-bold text-purple">Pending Requests</h4>
-                                    <p id="requestPending" class="fs-2 text-center mb-0 fw-bold" s">10</p>
-                            </div>
-                        </div>
-
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
 
     <?php if ($this->session->flashdata('success')): ?>
         <script>

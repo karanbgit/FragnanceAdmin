@@ -69,24 +69,24 @@ class AdminController extends CI_Controller
         $this->load->view('AdminOrder');
     }
 
-    public function users()
+    public function Users()
     {
         $this->load->view('AdminUsers');
     }
 
-    public function reports()
-    {
-        $this->load->view('AdminReports');
-    }
+    // public function reports()
+    // {
+    //     $this->load->view('AdminReports');
+    // }
 
     public function AllProducts()
     {
         $this->load->view('AllProducts');
     }
 
-    public function settings()
-    {
-        $this->load->view('AdminSettings');
-    }
+    // public function settings()
+    // {
+    //     $this->load->view('AdminSettings');
+    // }
 }
 ?>
