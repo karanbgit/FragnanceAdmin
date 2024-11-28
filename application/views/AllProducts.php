@@ -131,10 +131,21 @@
             <div class="container rounded-3 shadow">
                 <div class="row">
                     <div class="container">
-                        <button type="button" class="btn btn-primary m-2" data-bs-toggle="modal"
-                            data-bs-target="#addProductModal">
-                            Add Product
-                        </button>
+
+
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <button type="button" class="btn btn-primary m-2" data-bs-toggle="modal"
+                                    data-bs-target="#addProductModal">
+                                    Add Product
+                                </button>
+                            </div>
+                            <div class="col-lg-8 d-flex">
+                                <input type="text" class="form-control m-2" placeholder="Search">
+                                <button class="btn btn-primary m-2">Search</button>
+                            </div>
+                        </div>
+
 
                         <table class="table table-bordered table-hover text-center">
                             <thead class="table-dark">
@@ -144,37 +155,43 @@
                                     <th>Price</th>
                                     <th>MRP</th>
                                     <th>Description</th>
-                                    <th>Image</th>
                                     <th>What Makes Great(WMG)</th>
                                     <th>Category</th>
+                                    <th>Image</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
 
-                            <!-- 
+
                             <?php $count = 0;
                             foreach ($li as $data): ?>
                                 <tbody>
                                     <tr>
                                         <td><?php echo ++$count ?></td>
-                                        <td><?php echo $data->name ?></td>
-                                        <td><?php echo $data->email ?></td>
-                                        <td><?php echo $data->contact ?></td>
-                                        <td><?php echo $data->address ?></td>
-                                        <td><?php echo $data->password ?></td>
+                                        <td><?php echo $data['Name'] ?></td>
+                                        <td><?php echo '₹' . $data['Price'] ?></td>
+                                        <td><?php echo '₹' . $data['MRP'] ?></td>
+                                        <td><?php echo $data['Description'] ?></td>
+                                        <td><ol type="i"><?php foreach   ($data['WhatMakesGreat'] as $feature): ?>
+                                            
+                                                <li><?php echo $feature ?></li>
+                                            
+                                            <?php endforeach; ?>
+                                        </ol></td>
+                                        <td><?php echo $data['Category'] ?></td>
                                         <td><img class="image-fluid"
-                                                src="<?php echo base_url() . 'uploads/' . $data->img ?>" alt="Image"
+                                                src="<?php echo base_url() . 'uploads/' . $data['Image'] ?>" alt="Image"
                                                 style="width: 80px; height: 80px;"></td>
                                         <td>
-                                            <a href="<?php echo base_url() . 'CrudControllers/UpdateById/' ?><?php echo $data->id ?>"
+                                            <a href="<?php echo base_url() . 'AdminController/UpdateById/' ?><?php echo $data['id'] ?>"
                                                 class="btn btn-primary">Edit</a>
-                                            <a href="<?php echo base_url() . 'CrudControllers/DeleteById/' ?><?php echo $data->id ?>"
+                                            <a href="<?php echo base_url() . 'AdminController/DeleteById/' ?><?php echo $data['id'] ?>"
                                                 class="btn btn-danger">Delete</a>
                                         </td>
                                     </tr>
                                 </tbody>
 
-                            <?php endforeach; ?> -->
+                            <?php endforeach; ?>
 
 
                         </table>
@@ -236,24 +253,28 @@
                                     <label class="form-label">What Makes Great : </label>
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox"
-                                    value="Long lasting Eau De Parfum" name="WhatMakesGreat" id="feature1" >
-                                        <label class="form-check-label" for="feature1">Long lasting Eau De Parfum</label>
+                                            value="Long lasting Eau De Parfum" name="WhatMakesGreat[]" id="feature1">
+                                        <label class="form-check-label" for="feature1">Long lasting Eau De
+                                            Parfum</label>
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox"
-                                            value="Classic blend of Lavender, Basil & Vetiver" name="WhatMakesGreat" id="feature2">
+                                            value="Classic blend of Lavender, Basil & Vetiver" name="WhatMakesGreat[]"
+                                            id="feature2">
                                         <label class="form-check-label" for="feature2">Classic blend of Lavender, Basil
                                             & Vetiver</label>
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox"
-                                            value="Elegant, sophisticated & luxurious fragrance" name="WhatMakesGreat" id="feature3">
+                                            value="Elegant, sophisticated & luxurious fragrance" name="WhatMakesGreat[]"
+                                            id="feature3">
                                         <label class="form-check-label" for="feature3">Elegant, sophisticated &
                                             luxurious fragrance</label>
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox"
-                                            value="Travel friendly & ideal for gifting purpose" name="WhatMakesGreat"  id="feature4">
+                                            value="Travel friendly & ideal for gifting purpose" name="WhatMakesGreat[]"
+                                            id="feature4">
                                         <label class="form-check-label" for="feature4">Travel friendly & ideal for
                                             gifting purpose</label>
                                     </div>
@@ -263,12 +284,12 @@
                                 <!-- Category of Product -->
                                 <div class="mb-3">
                                     <label class="form-label">Category of Product : </label>
-                                    <select id="category" class="form-select" required>
+                                    <select id="category" name="category" class="form-select" required>
                                         <option value="">Choose a category</option>
-                                        <option name="Category" value="Luxury">Luxury</option>
-                                        <option name="Category" value="Natural">Natural</option>
-                                        <option name="Category" value="Science">Science</option>
-                                        <option name="Category" value="Wellness">Wellness</option>
+                                        <option value="Luxury">Luxury</option>
+                                        <option value="Natural">Natural</option>
+                                        <option value="Science">Science</option>
+                                        <option value="Wellness">Wellness</option>
                                     </select>
                                     <div class="error" id="categoryError"></div>
                                 </div>
@@ -283,8 +304,8 @@
                         </div>
 
                         <div class="text-end">
-                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
                             <button type="submit" class="btn btn-primary">Save the Product</button>
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
                         </div>
                 </div>
                 </form>

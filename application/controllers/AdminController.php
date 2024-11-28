@@ -84,15 +84,44 @@ class AdminController extends CI_Controller
     // }
 
     public function AllProducts()
-    {
-        $this->load->view('AllProducts');
+{
+    $loggedin = $this->ValidateSession();
+
+    if ($loggedin) {
+        // Fetch all products
+        $results = $this->AdminModel->GetAllProducts();
+
+     
+
+        // Process each product row
+        foreach ($results as &$row) {
+            // Split the 'WhatMakesGreat' field by commas into an array
+            if (isset($row['WhatMakesGreat'])) {
+                $row['WhatMakesGreat'] = explode('|', $row['WhatMakesGreat']);
+            }
+        }
+
+        // Pass the processed data to the view
+        $data['li'] = $results;
+
+        // Load the view
+        $this->load->view('AllProducts', $data);
+    } else {
+        // Redirect to the login page if the session is invalid
+        redirect('AdminController/index');
     }
+}
+
 
     public function AddProduct()
     {
         $this->ValidateSession();
 
         $formdata = $this->input->post();
+
+        $product=$this->input->post('WhatMakesGreat');
+        $product = implode('|', $product);
+        $formdata['WhatMakesGreat'] = $product;
 
         $config['upload_path'] = 'uploads/';
         $config['allowed_types'] = 'jpg|JPG|jpeg|JPEG|png|PNG|gif|GIF';

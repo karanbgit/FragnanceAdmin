@@ -15,6 +15,12 @@ class AdminModel extends CI_Model
         $insert = $this->db->insert('products', $data);
         return $insert;
     }
+
+    public function GetAllProducts()
+    {
+        $data = $this->db->get('products')->result_array();
+        return $data;
+    }
 }
 
 ?>
