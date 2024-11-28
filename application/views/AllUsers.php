@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FragnanceAdmin | Admin Dashboard</title>
+    <title>FragnanceAdmin | All Users</title>
 
 
     <!-- Favicon -->
@@ -88,13 +88,6 @@
             font-size: 1.4rem !important;
         }
 
-        .card {
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-        }
 
         @media (max-width: 768px) {
             .sidebar {
@@ -121,51 +114,47 @@
 </head>
 
 <body>
-
     <?php $this->load->view('Include/AdminSidebar.php'); ?>
 
     <div class="main-content vh-100" id="main">
         <div class="container-fluid p-4 ">
-            <h1 class="display-5 fs-1 mb-4 text-purple fw-bold">Welcome to Admin Dashboard</h1>
+            <h2 class="mb-3 text-center fw-bold">All Users</h2>
 
-            <div class="container my-5 rounded-3 shadow-lg" style="background-color: var(--lightPurple);">
-                <div class="row my-4">
-                    <div class="col-12">
-                        <h2 class="fw-bold text-center p-4 rounded-3 text-purple"
-                            style="background-color: rgba(255,255,255,0.7);">
-                            <i class="fas fa-chart-line me-2"></i>Statistics Overview
-                        </h2>
-                    </div>
-                </div>
-
-                <div class="row d-flex justify-content-center align-items-center pb-5 px-4">
-                   
-                    <div class="col-12 col-sm-6 col-lg-4 d-flex justify-content-center mb-4">
-                        <a href="<?php echo base_url() . 'AdminController/Users'; ?>" class="text-decoration-none">
-                            <div class="card shadow  d-flex justify-content-center align-items-center p-4"
-                                style="width: 250px; height: 220px; border: none; background-color: var(--lightGray); transition: all 0.3s ease;">
-                                <div class="circle-icon mb-3 d-flex align-items-center justify-content-center rounded-circle"
-                                    style="width: 80px; height: 80px; background-color: var(--lightPurple);">
-                                    <i class="fas fa-users fa-2x" style="color: black;"></i>
-                                </div>
-                                <h4 class="text-center fw-bold" style="color: black;">Total Users</h4>
-                                <p id="totalUser" class="fs-2 text-center mb-0 fw-bold" style="color: black;">2</p>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-12 col-sm-6 col-lg-4 d-flex justify-content-center mb-4">
-                        <a href="<?php echo base_url() . 'AdminController/AdminOrder'; ?>" class="text-decoration-none">
-                            <div class="card shadow d-flex justify-content-center align-items-center p-4"
-                                style="width: 250px; height: 220px; border: none; background-color: var(--lightGray); transition: all 0.3s ease;">
-                                <div class="circle-icon mb-3 d-flex align-items-center justify-content-center rounded-circle"
-                                    style="width: 80px; height: 80px; background-color: var(--lightPurple);">
-                                    <i class="fas fa-clock fa-2x" style="color: black;"></i>
-                                </div>
-                                <h4 class="text-center fw-bold" style="color: black;">Pending Requests</h4>
-                                <p id="requestPending" class="fs-2 text-center mb-0 fw-bold" style="color: black;">10</p>
-                            </div>
-                        </a>
+            <div class="container  rounded-3 shadow">
+                <div class="row">
+                    <div class="container">
+                        <table class="table mt-4 table-bordered text-center">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th>Sr. No</th>
+                                    <th>Name</th>
+                                    <th>Price</th>
+                                    <th>Description</th>
+                                    <th>Image</th>
+                                    <th>Actions</th>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Product 1</td>
+                                    <td>100</td>
+                                    <td>Description 1</td>
+                                    <td><img src="<?php echo base_url() . 'uploads/product1.jpg' ?>" alt="Product 1"
+                                            style="width: 100px; height: 100px;"></td>
+                                    <td><a href="#" class="btn btn-primary">Edit</a> <a href="#"
+                                            class="btn btn-danger">Delete</a></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Product 2</td>
+                                    <td>200</td>
+                                    <td>Description 2</td>
+                                    <td><img src="<?php echo base_url() . 'uploads/product2.jpg' ?>" alt="Product 2"
+                                            style="width: 100px; height: 100px;"></td>
+                                    <td><a href="#" class="btn btn-primary">Edit</a> <a href="#"
+                                            class="btn btn-danger">Delete</a></td>
+                                </tr>
+                            </thead>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -173,18 +162,11 @@
     </div>
 
 
-    <?php if ($this->session->flashdata('success')): ?>
-        <script>
-            alert("<?php echo $this->session->flashdata('success'); ?>");
-        </script>
-    <?php endif; ?>
-
-
-
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+
 
     <script>
         document.getElementById('toggleBtn').addEventListener('click', function () {
@@ -199,6 +181,7 @@
             });
         }
     </script>
+
 </body>
 
 </html>

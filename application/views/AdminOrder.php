@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Rokkitt:wght@400&display=swap" rel="stylesheet">
     <link href="assets/css/Orders.css" rel="stylesheet">
 
-    <title>Fragnance | Orders</title>
+    <title>FragnanceAdmin | Orders</title>
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"

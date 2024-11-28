@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fragnance | All Products</title>
+    <title>FragnanceAdmin | All Products</title>
 
 
     <!-- Favicon -->
@@ -134,7 +134,7 @@
         <div class="container-fluid p-4 ">
             <h1 class="display-5 mb-3 fs-1 text-purple fw-bold">All Products</h1>
 
-            <div class="container rounded-3 shadow-lg" style="background-color: var(--lightPurple);">
+            <div class="container rounded-3 shadow">
                 <div class="row">
                     <div class="container">
                         <button type="button" class="btn btn-primary m-2" data-bs-toggle="modal"

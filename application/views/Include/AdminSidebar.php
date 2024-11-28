@@ -13,7 +13,7 @@
             <i class="fa-solid fa-cart-shopping"></i>
             <span class="nav-text">Orders</span>
         </a>
-        <a href="<?php echo base_url() . 'AdminController/users'; ?>" class="nav-link">
+        <a href="<?php echo base_url() . 'AdminController/AllUsers'; ?>" class="nav-link">
             <i class="fa-solid fa-users"></i>
             <span class="nav-text">Users</span>
         </a>

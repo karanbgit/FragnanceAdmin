@@ -61,6 +61,10 @@ class AdminController extends CI_Controller
 
     public function home()
     {
+        $loggedin = $this->ValidateSession();
+        if (!$loggedin) {
+            return redirect('AdminController/index');
+        }
         $this->load->view('AdminHome');
     }
 
@@ -69,9 +73,9 @@ class AdminController extends CI_Controller
         $this->load->view('AdminOrder');
     }
 
-    public function Users()
+    public function AllUsers()
     {
-        $this->load->view('AdminUsers');
+        $this->load->view('AllUsers');
     }
 
     // public function reports()
