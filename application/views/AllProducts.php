@@ -142,33 +142,40 @@
                                     <th>Sr. No</th>
                                     <th>Name</th>
                                     <th>Price</th>
+                                    <th>MRP</th>
                                     <th>Description</th>
                                     <th>Image</th>
+                                    <th>What Makes Great(WMG)</th>
+                                    <th>Category</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Product 1</td>
-                                    <td>100</td>
-                                    <td>Description 1</td>
-                                    <td><img src="<?php echo base_url() . 'uploads/product1.jpg' ?>" alt="Product 1"
-                                            style="width: 100px; height: 100px;"></td>
-                                    <td><a href="#" class="btn btn-primary">Edit</a> <a href="#"
-                                            class="btn btn-danger">Delete</a></td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Product 2</td>
-                                    <td>200</td>
-                                    <td>Description 2</td>
-                                    <td><img src="<?php echo base_url() . 'uploads/product2.jpg' ?>" alt="Product 2"
-                                            style="width: 100px; height: 100px;"></td>
-                                    <td><a href="#" class="btn btn-primary">Edit</a> <a href="#"
-                                            class="btn btn-danger">Delete</a></td>
-                                </tr>
-                            </tbody>
+
+                            <!-- 
+                            <?php $count = 0;
+                            foreach ($li as $data): ?>
+                                <tbody>
+                                    <tr>
+                                        <td><?php echo ++$count ?></td>
+                                        <td><?php echo $data->name ?></td>
+                                        <td><?php echo $data->email ?></td>
+                                        <td><?php echo $data->contact ?></td>
+                                        <td><?php echo $data->address ?></td>
+                                        <td><?php echo $data->password ?></td>
+                                        <td><img class="image-fluid"
+                                                src="<?php echo base_url() . 'uploads/' . $data->img ?>" alt="Image"
+                                                style="width: 80px; height: 80px;"></td>
+                                        <td>
+                                            <a href="<?php echo base_url() . 'CrudControllers/UpdateById/' ?><?php echo $data->id ?>"
+                                                class="btn btn-primary">Edit</a>
+                                            <a href="<?php echo base_url() . 'CrudControllers/DeleteById/' ?><?php echo $data->id ?>"
+                                                class="btn btn-danger">Delete</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                            <?php endforeach; ?> -->
+
 
                         </table>
                     </div>
@@ -188,26 +195,27 @@
                 </div>
                 <div class="modal-body">
                     <!-- Product Form -->
-                    <form id="productForm" novalidate>
+                    <form action="<?php echo base_url() . 'AdminController/AddProduct/' ?>" method="post"
+                        enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-md-6">
                                 <!-- Product Name -->
                                 <div class="mb-3">
-                                    <label for="productName" class="form-label">Product Name</label>
-                                    <input type="text" id="productName" class="form-control" required>
+                                    <label for="productName" class="form-label">Product Name : </label>
+                                    <input type="text" id="productName" name="Name" class="form-control" required>
                                     <div class="error" id="productNameError"></div>
                                 </div>
 
                                 <!-- Price -->
                                 <div class="row mb-3">
                                     <div class="col-md-6">
-                                        <label for="mrp" class="form-label">MRP</label>
-                                        <input type="number" id="mrp" class="form-control" required>
+                                        <label for="mrp" class="form-label">MRP : </label>
+                                        <input type="number" id="mrp" name="MRP" class="form-control" required>
                                         <div class="error" id="mrpError"></div>
                                     </div>
                                     <div class="col-md-6">
-                                        <label for="price" class="form-label">Price</label>
-                                        <input type="number" id="price" class="form-control" required>
+                                        <label for="price" class="form-label">Price : </label>
+                                        <input type="number" id="price" name="Price" class="form-control" required>
                                         <div class="error" id="priceError"></div>
                                     </div>
 
@@ -215,8 +223,9 @@
 
                                 <!-- Description -->
                                 <div class="mb-3">
-                                    <label for="description" class="form-label">Description</label>
-                                    <textarea id="description" class="form-control" rows="4" required></textarea>
+                                    <label for="description" class="form-label">Description : </label>
+                                    <textarea id="description" name="Description" class="form-control" rows="4"
+                                        required></textarea>
                                     <div class="error" id="descriptionError"></div>
                                 </div>
                             </div>
@@ -224,31 +233,27 @@
                             <div class="col-md-6">
                                 <!-- What Makes Great -->
                                 <div class="mb-3">
-                                    <label class="form-label">What Makes Great</label>
+                                    <label class="form-label">What Makes Great : </label>
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox"
-                                            value="Long lasting Eau De Parfum" id="feature1" name="greatFeatures[]">
-                                        <label class="form-check-label" for="feature1">Long lasting Eau De
-                                            Parfum</label>
+                                    value="Long lasting Eau De Parfum" name="WhatMakesGreat" id="feature1" >
+                                        <label class="form-check-label" for="feature1">Long lasting Eau De Parfum</label>
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox"
-                                            value="Classic blend of Lavender, Basil & Vetiver" id="feature2"
-                                            name="greatFeatures[]">
+                                            value="Classic blend of Lavender, Basil & Vetiver" name="WhatMakesGreat" id="feature2">
                                         <label class="form-check-label" for="feature2">Classic blend of Lavender, Basil
                                             & Vetiver</label>
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox"
-                                            value="Elegant, sophisticated & luxurious fragrance" id="feature3"
-                                            name="greatFeatures[]">
+                                            value="Elegant, sophisticated & luxurious fragrance" name="WhatMakesGreat" id="feature3">
                                         <label class="form-check-label" for="feature3">Elegant, sophisticated &
                                             luxurious fragrance</label>
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox"
-                                            value="Travel friendly & ideal for gifting purpose" id="feature4"
-                                            name="greatFeatures[]">
+                                            value="Travel friendly & ideal for gifting purpose" name="WhatMakesGreat"  id="feature4">
                                         <label class="form-check-label" for="feature4">Travel friendly & ideal for
                                             gifting purpose</label>
                                     </div>
@@ -257,21 +262,21 @@
 
                                 <!-- Category of Product -->
                                 <div class="mb-3">
-                                    <label class="form-label">Category of Product</label>
+                                    <label class="form-label">Category of Product : </label>
                                     <select id="category" class="form-select" required>
                                         <option value="">Choose a category</option>
-                                        <option value="Luxury">Luxury</option>
-                                        <option value="Natural">Natural</option>
-                                        <option value="Science">Science</option>
-                                        <option value="Wellness">Wellness</option>
+                                        <option name="Category" value="Luxury">Luxury</option>
+                                        <option name="Category" value="Natural">Natural</option>
+                                        <option name="Category" value="Science">Science</option>
+                                        <option name="Category" value="Wellness">Wellness</option>
                                     </select>
                                     <div class="error" id="categoryError"></div>
                                 </div>
 
                                 <!-- Image -->
                                 <div class="mb-3">
-                                    <label for="image" class="form-label">Image</label>
-                                    <input type="file" id="image" class="form-control" required>
+                                    <label for="image" class="form-label">Image : </label>
+                                    <input type="file" name="Image" id="image" class="form-control" required>
                                     <div class="error" id="imageError"></div>
                                 </div>
                             </div>

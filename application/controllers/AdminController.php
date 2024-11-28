@@ -88,9 +88,40 @@ class AdminController extends CI_Controller
         $this->load->view('AllProducts');
     }
 
-    // public function settings()
-    // {
-    //     $this->load->view('AdminSettings');
-    // }
+    public function AddProduct()
+    {
+        $this->ValidateSession();
+
+        $formdata = $this->input->post();
+
+        $config['upload_path'] = 'uploads/';
+        $config['allowed_types'] = 'jpg|JPG|jpeg|JPEG|png|PNG|gif|GIF';
+        $config['max_size'] = 51200; // 50 MB in KB
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+
+        $data = []; // Initialize an array to hold the response data
+
+        // Check if a file is uploaded
+
+        if (isset($_FILES["Image"])) {
+            if (!$this->upload->do_upload('Image')) {
+                $data['error'] = $this->upload->display_errors();
+                print_r($data);
+            } else {
+                $data['upload_data'] = $this->upload->data();
+                $formdata['Image'] = $data['upload_data']['file_name'];
+            }
+        }
+        $result = $this->AdminModel->AddProductModel($formdata);
+
+        if ($result) {
+
+            redirect('AdminController/AllProducts');
+            // echo "Successfull inserted";
+        } else {
+            echo "fail";
+        }
+    }
 }
 ?>
