@@ -141,7 +141,7 @@
                 <div class="row d-flex justify-content-center align-items-center pb-5 px-4">
                    
                     <div class="col-12 col-sm-6 col-lg-4 d-flex justify-content-center mb-4">
-                        <a href="<?php echo base_url() . 'AdminController/Users'; ?>" class="text-decoration-none">
+                        <a href="<?php echo base_url() . 'AdminController/AllUsers'; ?>" class="text-decoration-none">
                             <div class="card shadow  d-flex justify-content-center align-items-center p-4"
                                 style="width: 250px; height: 220px; border: none; background-color: var(--lightGray); transition: all 0.3s ease;">
                                 <div class="circle-icon mb-3 d-flex align-items-center justify-content-center rounded-circle"

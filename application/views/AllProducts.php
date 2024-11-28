@@ -88,13 +88,7 @@
             font-size: 1.4rem !important;
         }
 
-        .card {
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-        }
 
-        .card:hover {
-            transform: translateY(-10px);
-        }
 
         @media (max-width: 768px) {
             .sidebar {
@@ -131,7 +125,7 @@
     <?php $this->load->view('Include/AdminSidebar.php'); ?>
 
     <div class="main-content vh-100" id="main">
-        <div class="container-fluid p-4 ">
+        <div class="container-fluid p-2 ">
             <h1 class="display-5 mb-3 fs-1 text-purple fw-bold">All Products</h1>
 
             <div class="container rounded-3 shadow">
@@ -142,8 +136,8 @@
                             Add Product
                         </button>
 
-                        <table class="table table-bordered text-center">
-                            <thead class="thead-light">
+                        <table class="table table-bordered table-hover text-center">
+                            <thead class="table-dark">
                                 <tr>
                                     <th>Sr. No</th>
                                     <th>Name</th>
@@ -152,6 +146,8 @@
                                     <th>Image</th>
                                     <th>Actions</th>
                                 </tr>
+                            </thead>
+                            <tbody>
                                 <tr>
                                     <td>1</td>
                                     <td>Product 1</td>
@@ -172,7 +168,8 @@
                                     <td><a href="#" class="btn btn-primary">Edit</a> <a href="#"
                                             class="btn btn-danger">Delete</a></td>
                                 </tr>
-                            </thead>
+                            </tbody>
+
                         </table>
                     </div>
                 </div>

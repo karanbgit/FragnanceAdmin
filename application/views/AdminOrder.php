@@ -130,7 +130,7 @@
             </div>
 
             <div class="table-responsive">
-                <table class="table table-bordered table-hover">
+                <table class="table table-bordered  table-hover">
                     <thead class="table-dark">
                         <tr>
                             <th>Name</th>

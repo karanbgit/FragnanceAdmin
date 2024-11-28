@@ -117,46 +117,70 @@
     <?php $this->load->view('Include/AdminSidebar.php'); ?>
 
     <div class="main-content vh-100" id="main">
-        <div class="container-fluid p-4 ">
-            <h2 class="mb-3 text-center fw-bold">All Users</h2>
 
-            <div class="container  rounded-3 shadow">
-                <div class="row">
-                    <div class="container">
-                        <table class="table mt-4 table-bordered text-center">
-                            <thead class="thead-light">
-                                <tr>
-                                    <th>Sr. No</th>
-                                    <th>Name</th>
-                                    <th>Price</th>
-                                    <th>Description</th>
-                                    <th>Image</th>
-                                    <th>Actions</th>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Product 1</td>
-                                    <td>100</td>
-                                    <td>Description 1</td>
-                                    <td><img src="<?php echo base_url() . 'uploads/product1.jpg' ?>" alt="Product 1"
-                                            style="width: 100px; height: 100px;"></td>
-                                    <td><a href="#" class="btn btn-primary">Edit</a> <a href="#"
-                                            class="btn btn-danger">Delete</a></td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Product 2</td>
-                                    <td>200</td>
-                                    <td>Description 2</td>
-                                    <td><img src="<?php echo base_url() . 'uploads/product2.jpg' ?>" alt="Product 2"
-                                            style="width: 100px; height: 100px;"></td>
-                                    <td><a href="#" class="btn btn-primary">Edit</a> <a href="#"
-                                            class="btn btn-danger">Delete</a></td>
-                                </tr>
-                            </thead>
-                        </table>
-                    </div>
-                </div>
+
+        <div class="container mt-5">
+            <h2 class="text-center mb-4 fw-bold">Customer Management Table</h2>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>User ID</th>
+                            <th>Name</th>
+                            <th>Email Address</th>
+                            <th>Phone Number</th>
+                            <th>Registration Date</th>
+                            <th>Order History</th>
+                            <th>Last Activity Date</th>
+                            <th>Account Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>C001</td>
+                            <td>John Doe</td>
+                            <td>john.doe@example.com</td>
+                            <td>123-456-7890</td>
+                            <td>2024-01-10</td>
+                            <td>5 orders</td>
+                            <td>2024-11-25</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                            <td>
+                                <button class="btn btn-sm btn-primary">Edit</button>
+                                <button class="btn btn-sm btn-danger">Delete</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>C002</td>
+                            <td>Jane Smith</td>
+                            <td>jane.smith@example.com</td>
+                            <td>987-654-3210</td>
+                            <td>2024-02-15</td>
+                            <td>3 orders</td>
+                            <td>2024-11-20</td>
+                            <td><span class="badge bg-warning text-dark">Suspended</span></td>
+                            <td>
+                                <button class="btn btn-sm btn-primary">Edit</button>
+                                <button class="btn btn-sm btn-danger">Delete</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>C003</td>
+                            <td>Alice Johnson</td>
+                            <td>alice.j@example.com</td>
+                            <td>555-666-7777</td>
+                            <td>2024-03-20</td>
+                            <td>8 orders</td>
+                            <td>2024-11-27</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                            <td>
+                                <button class="btn btn-sm btn-primary">Edit</button>
+                                <button class="btn btn-sm btn-danger">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
