@@ -9,6 +9,12 @@ class AdminModel extends CI_Model
         $this->load->database();
     }
 
+    public function ValidateSession()
+    {
+        $loggedin = $this->session->userdata('user');
+        return $loggedin;
+    }
+
     // Insert User Data in Student Table (User form)
     public function AddProductModel($data)
     {
@@ -20,6 +26,13 @@ class AdminModel extends CI_Model
     {
         $data = $this->db->get('products')->result_array();
         return $data;
+    }
+    
+    public function LoginModelpost($data)
+    {
+
+        $result = $this->db->get_where('admins', $data)->row();
+        return $result;
     }
 }
 

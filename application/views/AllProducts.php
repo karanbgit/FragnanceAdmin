@@ -18,9 +18,7 @@
     <link rel="stylesheet" href="<?php echo base_url() . '/assets/css/Style.css'; ?>">
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
     <!-- Fonts CDN Link -->
@@ -88,7 +86,76 @@
             font-size: 1.4rem !important;
         }
 
+        .table-container {
+            overflow-x: auto;
+        }
 
+        .table-container thead th {
+            position: sticky;
+            top: 0;
+            background-color: #212529;
+            z-index: 1;
+        }
+
+        /* Fixed column widths */
+        .table th:nth-child(1) {
+            /* Sr. No */
+            width: 80px;
+            min-width: 80px;
+        }
+
+        .table th:nth-child(2) {
+            /* Name */
+            width: 200px;
+            min-width: 200px;
+        }
+
+        .table th:nth-child(3),
+        /* Price */
+        .table th:nth-child(4) {
+            /* MRP */
+            width: 100px;
+            min-width: 100px;
+        }
+
+        .table th:nth-child(5) {
+            /* Description */
+            width: 300px;
+            min-width: 300px;
+        }
+
+        .table th:nth-child(6) {
+            /* What Makes Great */
+            width: 300px;
+            min-width: 300px;
+        }
+
+        .table th:nth-child(7),
+        /* Category */
+        .table th:nth-child(8) {
+            /* Sub Category */
+            width: 120px;
+            min-width: 120px;
+        }
+
+        .table th:nth-child(9) {
+            /* Image */
+            width: 150px;
+            min-width: 150px;
+        }
+
+        .table th:nth-child(10) {
+            /* Actions */
+            width: 180px;
+            min-width: 180px;
+        }
+
+        /* Table cell styles */
+        .table td {
+            white-space: normal;
+            word-wrap: break-word;
+            vertical-align: middle;
+        }
 
         @media (max-width: 768px) {
             .sidebar {
@@ -131,8 +198,6 @@
             <div class="container rounded-3 shadow">
                 <div class="row">
                     <div class="container">
-
-
                         <div class="row">
                             <div class="col-lg-3">
                                 <button type="button" class="btn btn-primary m-2" data-bs-toggle="modal"
@@ -140,61 +205,65 @@
                                     Add Product
                                 </button>
                             </div>
-                            <div class="col-lg-8 d-flex">
+                            <div class="col-lg-5">
                                 <input type="text" class="form-control m-2" placeholder="Search">
-                                <button class="btn btn-primary m-2">Search</button>
+                            </div>
+                            <div class="col-lg-4">
                             </div>
                         </div>
 
-
-                        <table class="table table-bordered table-hover text-center">
-                            <thead class="table-dark">
-                                <tr>
-                                    <th>Sr. No</th>
-                                    <th>Name</th>
-                                    <th>Price</th>
-                                    <th>MRP</th>
-                                    <th>Description</th>
-                                    <th>What Makes Great(WMG)</th>
-                                    <th>Category</th>
-                                    <th>Image</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-
-
-                            <?php $count = 0;
-                            foreach ($li as $data): ?>
-                                <tbody>
+                        <div class="table-container">
+                            <table class="table table-bordered table-hover text-center">
+                                <thead class="table-dark">
                                     <tr>
-                                        <td><?php echo ++$count ?></td>
-                                        <td><?php echo $data['Name'] ?></td>
-                                        <td><?php echo '₹' . $data['Price'] ?></td>
-                                        <td><?php echo '₹' . $data['MRP'] ?></td>
-                                        <td><?php echo $data['Description'] ?></td>
-                                        <td><ol type="i"><?php foreach   ($data['WhatMakesGreat'] as $feature): ?>
-                                            
-                                                <li><?php echo $feature ?></li>
-                                            
-                                            <?php endforeach; ?>
-                                        </ol></td>
-                                        <td><?php echo $data['Category'] ?></td>
-                                        <td><img class="image-fluid"
-                                                src="<?php echo base_url() . 'uploads/' . $data['Image'] ?>" alt="Image"
-                                                style="width: 80px; height: 80px;"></td>
-                                        <td>
-                                            <a href="<?php echo base_url() . 'AdminController/UpdateById/' ?><?php echo $data['id'] ?>"
-                                                class="btn btn-primary">Edit</a>
-                                            <a href="<?php echo base_url() . 'AdminController/DeleteById/' ?><?php echo $data['id'] ?>"
-                                                class="btn btn-danger">Delete</a>
-                                        </td>
+                                        <th>Sr. No</th>
+                                        <th>Name</th>
+                                        <th>Price</th>
+                                        <th>MRP</th>
+                                        <th>Description</th>
+                                        <th>What Makes Great(WMG)</th>
+                                        <th>Category</th>
+                                        <th>Sub Category</th>
+                                        <th>Image</th>
+                                        <th>Actions</th>
                                     </tr>
-                                </tbody>
-
-                            <?php endforeach; ?>
+                                </thead>
 
 
-                        </table>
+                                <?php $count = 0;
+                                foreach ($li as $data): ?>
+                                    <tbody>
+                                        <tr>
+                                            <td><?php echo ++$count ?></td>
+                                            <td><?php echo $data['Name'] ?></td>
+                                            <td><?php echo '₹' . $data['Price'] ?></td>
+                                            <td><?php echo '₹' . $data['MRP'] ?></td>
+                                            <td><?php echo $data['Description'] ?></td>
+                                            <td>
+                                                <ol type="i"><?php foreach ($data['WhatMakesGreat'] as $feature): ?>
+
+                                                        <li><?php echo $feature ?></li>
+
+                                                    <?php endforeach; ?>
+                                                </ol>
+                                            </td>
+                                            <td><?php echo $data['Category'] ?></td>
+                                            <td><?php echo $data['SubCategory'] ?></td>
+                                            <td><img class="image-fluid"
+                                                    src="<?php echo base_url() . 'uploads/' . $data['Image'] ?>" alt="Image"
+                                                    style="width: 100px; height: 100px;"></td>
+                                            <td>
+                                                <a href="<?php echo base_url() . 'AdminController/UpdateById/' ?><?php echo $data['id'] ?>"
+                                                    class="btn btn-primary">Edit</a>
+                                                <a href="<?php echo base_url() . 'AdminController/DeleteById/' ?><?php echo $data['id'] ?>"
+                                                    class="btn btn-danger">Delete</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+
+                                <?php endforeach; ?>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -282,16 +351,28 @@
                                 </div>
 
                                 <!-- Category of Product -->
-                                <div class="mb-3">
-                                    <label class="form-label">Category of Product : </label>
-                                    <select id="category" name="category" class="form-select" required>
-                                        <option value="">Choose a category</option>
-                                        <option value="Luxury">Luxury</option>
-                                        <option value="Natural">Natural</option>
-                                        <option value="Science">Science</option>
-                                        <option value="Wellness">Wellness</option>
-                                    </select>
-                                    <div class="error" id="categoryError"></div>
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label">Category of Product : </label>
+                                        <select id="category" name="category" class="form-select" required>
+                                            <option value="">Choose a category</option>
+                                            <option value="Luxury">Luxury</option>
+                                            <option value="Natural">Natural</option>
+                                            <option value="Science">Science</option>
+                                            <option value="Wellness">Wellness</option>
+                                        </select>
+                                        <div class="error" id="categoryError"></div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Sub Category : </label>
+                                        <select id="subcategory" name="subcategory" class="form-select" required>
+                                            <option value="">Choose a sub category</option>
+                                            <option value="Men">Men</option>
+                                            <option value="Women">Women</option>
+                                            <option value="both">Both</option>
+                                        </select>
+                                        <div class="error" id="subcategoryError"></div>
+                                    </div>
                                 </div>
 
                                 <!-- Image -->
@@ -325,7 +406,7 @@
 
     <script>
         // Form Validation
-        document.getElementById('productForm').addEventListener('submit', function (event) {
+        document.getElementById('productForm').addEventListener('submit', function(event) {
             event.preventDefault();
 
             let isValid = true;
@@ -407,14 +488,14 @@
     </script>
 
     <script>
-        document.getElementById('toggleBtn').addEventListener('click', function () {
+        document.getElementById('toggleBtn').addEventListener('click', function() {
             document.getElementById('sidebar').classList.toggle('collapsed');
             document.getElementById('main').classList.toggle('expanded');
         });
 
         // For mobile responsiveness
         if (window.innerWidth <= 768) {
-            document.getElementById('sidebar').addEventListener('click', function () {
+            document.getElementById('sidebar').addEventListener('click', function() {
                 this.classList.toggle('expanded');
             });
         }

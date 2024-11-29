@@ -156,7 +156,7 @@
 
             <p><a href="#">Forget Password</a></p>
 
-            <button id="btn" type="submit" name="login" value="Login">Login</button>
+            <button id="btn" type="submit"  value="Login">Login</button>
 
         </form>
     </div>
