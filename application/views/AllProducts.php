@@ -178,6 +178,28 @@
                 display: inline;
             }
         }
+
+        /* Pagination styles */
+        .pagination {
+            margin-top: 20px;
+            justify-content: center;
+        }
+
+        .pagination .page-item .page-link {
+            color: #333;
+            border: 1px solid #ddd;
+            padding: 8px 16px;
+        }
+
+        .pagination .page-item.active .page-link {
+            background-color: #333;
+            border-color: #333;
+            color: white;
+        }
+
+        .pagination .page-item .page-link:hover {
+            background-color: #f8f9fa;
+        }
     </style>
 
     <style>
@@ -199,17 +221,26 @@
                 <div class="row">
                     <div class="container">
                         <div class="row">
+                            <div class="col-lg-4">
+                                <label class="mt-2" for="recordsPerPage">Records per page:</label>
+                                <select id="recordsPerPage" class="form-control mt-3" onchange="updateRecordsPerPage()">
+                                    <option value="5">5</option>
+                                    <option value="10" selected>10</option>
+                                    <option value="15">15</option>
+                                    <option value="20">20</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-5">
+                                <input type="text" id="search" class="form-control m-2 mt-5" oninput="filterRecords()"
+                                    placeholder="Search by name, price, mrp, category or sub category">
+                            </div>
                             <div class="col-lg-3">
-                                <button type="button" class="btn btn-primary m-2" data-bs-toggle="modal"
+                                <button type="button" class="btn btn-primary m-2 mt-5" data-bs-toggle="modal"
                                     data-bs-target="#addProductModal">
                                     Add Product
                                 </button>
                             </div>
-                            <div class="col-lg-5">
-                                <input type="text" class="form-control m-2" placeholder="Search">
-                            </div>
-                            <div class="col-lg-4">
-                            </div>
+
                         </div>
 
                         <div class="table-container">
@@ -230,8 +261,20 @@
                                 </thead>
 
 
-                                <?php $count = 0;
-                                foreach ($li as $data): ?>
+                                <?php
+                                $items_per_page = 10;
+                                $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
+                                $start_index = ($current_page - 1) * $items_per_page;
+
+                                // Get total number of items
+                                $total_items = count($li);
+                                $total_pages = ceil($total_items / $items_per_page);
+
+                                // Get items for current page
+                                $page_items = array_slice($li, $start_index, $items_per_page);
+
+                                $count = $start_index;
+                                foreach ($page_items as $data): ?>
                                     <tbody>
                                         <tr>
                                             <td><?php echo ++$count ?></td>
@@ -260,9 +303,35 @@
                                             </td>
                                         </tr>
                                     </tbody>
-
                                 <?php endforeach; ?>
                             </table>
+
+                            <!-- Pagination -->
+                            <nav aria-label="Page navigation">
+                                <ul class="pagination">
+                                    <?php if ($current_page > 1): ?>
+                                        <li class="page-item">
+                                            <a class="page-link" href="?page=<?php echo $current_page - 1 ?>" aria-label="Previous">
+                                                <span aria-hidden="true">&laquo;</span>
+                                            </a>
+                                        </li>
+                                    <?php endif; ?>
+
+                                    <?php for ($i = 1; $i <= $total_pages; $i++): ?>
+                                        <li class="page-item <?php echo ($i == $current_page) ? 'active' : '' ?>">
+                                            <a class="page-link" href="?page=<?php echo $i ?>"><?php echo $i ?></a>
+                                        </li>
+                                    <?php endfor; ?>
+
+                                    <?php if ($current_page < $total_pages): ?>
+                                        <li class="page-item">
+                                            <a class="page-link" href="?page=<?php echo $current_page + 1 ?>" aria-label="Next">
+                                                <span aria-hidden="true">&raquo;</span>
+                                            </a>
+                                        </li>
+                                    <?php endif; ?>
+                                </ul>
+                            </nav>
                         </div>
                     </div>
                 </div>
@@ -367,8 +436,8 @@
                                         <label class="form-label">Sub Category : </label>
                                         <select id="subcategory" name="subcategory" class="form-select" required>
                                             <option value="">Choose a sub category</option>
-                                            <option value="Men">Men</option>
-                                            <option value="Women">Women</option>
+                                            <option value="Men">Men's</option>
+                                            <option value="Women">Women's</option>
                                             <option value="both">Both</option>
                                         </select>
                                         <div class="error" id="subcategoryError"></div>
@@ -388,8 +457,8 @@
                             <button type="submit" class="btn btn-primary">Save the Product</button>
                             <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
                         </div>
+                    </form>
                 </div>
-                </form>
             </div>
         </div>
     </div>
@@ -399,10 +468,33 @@
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous">
+    </script>
 
+    <script>
+        function filterRecords() {
+            const searchValue = document.getElementById('search').value.toLowerCase();
+            const rows = document.querySelectorAll('tbody tr');
 
+            rows.forEach(row => {
+                const name = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
+                const price = row.querySelector('td:nth-child(3)').textContent.toLowerCase();
+                const mrp = row.querySelector('td:nth-child(4)').textContent.toLowerCase();
+                const category = row.querySelector('td:nth-child(7)').textContent.toLowerCase();
+                const subCategory = row.querySelector('td:nth-child(8)').textContent.toLowerCase();
 
+                if (name.includes(searchValue) ||
+                    price.includes(searchValue) ||
+                    mrp.includes(searchValue) ||
+                    category.includes(searchValue) ||
+                    subCategory.includes(searchValue)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+    </script>
 
     <script>
         // Form Validation
